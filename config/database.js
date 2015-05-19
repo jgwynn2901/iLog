@@ -1,5 +1,5 @@
 // config/database.js
 
 module.exports = {
-    url : 'mongodb://localhost:27017/ilog'
+    url : 'mongodb://waldev01ifnba.na.tigplc.com:27017/ilog'
 };
