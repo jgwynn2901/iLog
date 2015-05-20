@@ -8,8 +8,9 @@
     <title>iLog</title>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/site.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -18,34 +19,61 @@
     <![endif]-->
   </head>
   <body>
-    <ng-toast></ng-toast>
-    <div class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="~/"><i class="fa fa-bug"></i>&nbsp;iLog Issue Tracking</a>
+    <div id="ng-app">
+      <ng-toast></ng-toast>
+      <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="~/"><i class="fa fa-bug"></i>&nbsp;iLog Issue Tracking</a>
 
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
 
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <a>
-                <i class="fa fa-lock"></i>&nbsp;Login
-              </a>
-            </li>
-          </ul>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <a>
+                  <i class="fa fa-lock"></i>&nbsp;Login
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
+      <div class="col-md-4">
+            <img class="logo" src="images/ilog.png" width="220" height="120" alt="iLog">
+      </div>
+      <div class="container" ng-controller="bugController">
+        <div class="row">
+          <div class="col-md-1">
+          </div>
+          <div class="col-md-8">
+            <br/><br/>
+            <h3>Open Issues</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-1">
+          </div>
+          <div class="col-md-8">
 
+            <ul>
+              <li ng-repeat="bug in bugs">
+                {{ bug.issue_subject }}
+              </li>
+            </ul>
+          </div>
+          </div>
+      </div>
+    </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script data-main="/app/main.js" src="/vendors/require.js"></script>
   </body>
 </html>
