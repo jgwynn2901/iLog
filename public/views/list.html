@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="col-md-4">
+        <img class="logo" src="images/ilog.png" width="220" height="120" alt="iLog">
+  </div>
+  <div class="container" ng-controller="bugController">
+    <div class="row">
+      <div class="col-md-1">
+      </div>
+      <div class="col-md-8">
+        <br/><br/>
+        <h3>Open Issues</h3>
+      </div>
+    </div>
+    <div class="row" ng-repeat="bug in bugs">
+      <div class="question">
+        <div class="question-summary" title="{{ bug.issue_history }}">
+          <div class="col-md-2">
+              <span>{{ bug.issue_id }}</span>
+          </div>
+          <div class="col-md-10">
+            <div class="row">
+              <div class="col-md-10">
+                <h4>{{ bug.issue_subject }}</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-5">
+                <span>Requested by: {{ bug.submitted_by }}</span>
+              </div>
+              <div class="col-md-5">
+                <span>Assigned to: {{ bug.assigned_to }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
