@@ -11,8 +11,8 @@
         <h3>Open Issues</h3>
       </div>
     </div>
-    <div class="row" ng-repeat="bug in bugs">
-      <div class="question">
+    <div class="row" ng-repeat="bug in bugs" >
+      <div class="question" ng-click="detail(bug.issue_id)">
         <div class="question-summary" title="{{ bug.issue_history }}">
           <div class="col-md-2">
               <span>{{ bug.issue_id }}</span>

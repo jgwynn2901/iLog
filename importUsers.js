@@ -27,14 +27,12 @@ MongoClient.connect(database.url, function (err, db) {
           collection.insert(data[i], function (err, result) {
             if (err) {
               console.log(err);
-            } else {
-              //console.log(result);
-              //Close connection
-              //db.close();
             }
           });
         }
       }
+      //Close connection
+      //db.close();
     });
   }
 });

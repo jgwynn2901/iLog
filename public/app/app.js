@@ -1,5 +1,5 @@
-define(['dataService', 'bugController'],
-  function (dataService, bugController) {
+define(['dataService', 'bugController', 'detailController'],
+  function (dataService, bugController, detailController) {
     'use strict';
 
     var app = angular.module('app', ['ui.bootstrap', 'ui.router']);
@@ -9,17 +9,21 @@ define(['dataService', 'bugController'],
       $stateProvider
         // HOME STATES AND NESTED VIEWS ========================================
         .state('home', {
-            url: '/',
-            templateUrl: 'views/list.html'
+          url: '/',
+          templateUrl: 'views/list.html'
         })
         // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
-        .state('about', {
-            // we'll get to this in a bit
-        })
+        .state('bug', {
+          // display detail page by issue_id
+          url: '/bug/{issue_id}',
+          templateUrl: 'views/detail.html',
+          controller: 'detailController'
+        });
     });
 
     app.factory('dataService', dataService)
-      .controller('bugController', bugController);
+      .controller('bugController', bugController)
+      .controller('detailController', detailController);
 
     return app;
   });
