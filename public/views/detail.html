@@ -3,13 +3,53 @@
     <img class="logo" src="images/ilog.png" width="220" height="120" alt="iLog">
   </div>
   <div class="container">
+    <div class="row"><br/></div>
     <div class="row">
-      <div class="col-md-1">
+      <div class="col-md-2">
+        <h4><b>{{ bug.issue_id }}</b></h4>
       </div>
-      <div class="col-md-8">
-        <br/><br/>
-        <h3>{{ bug.issue_id }}</h3>
+      <div class="com-md-8">
+        <h4><b>{{ bug.issue_subject }}</b></h4>
       </div>
     </div>
+    <div class="row"><br/></div>
+    <div class="row">
+      <div class="col-md-3">
+        <span>Assigned to: {{ bug.assigned_to }}</span>
+      </div>
+      <div class="col-md-3">
+        <span>Submited by: {{ bug.submitted_by }}</span>
+      </div>
+      <div class="col-md-2">
+        <span>Status: {{ bug.status }}</span>
+      </div>
+      <div class="col-md-2">
+        <span>Open Flag: {{ bug.open_flg }}</span>
+      </div>
+    </div>
+    <div class="row"><br/></div>
+    <div class="row">
+      <div class="col-md-3">
+        <span>Category: {{ bug.department }}</span>
+      </div>
+      <div class="col-md-3">
+        <span>Application: {{ bug.application }}</span>
+      </div>
+      <div class="col-md-2">
+        <span>Client: {{ bug.client }}</span>
+      </div>
+      <div class="col-md-2">
+        <span>LOB: {{ bug.lob }}</span>
+      </div>
+    </div>
+    <div class="row"><br/></div>
+    <div class="row">
+      <div class="col-md-10">
+        <hr />
+        <div ng-bind-html="getDescription()"></div>
+        <hr />
+      </div>
+    </div>
+
   </div>
 </div>

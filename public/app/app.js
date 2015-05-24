@@ -2,7 +2,7 @@ define(['dataService', 'bugController', 'detailController'],
   function (dataService, bugController, detailController) {
     'use strict';
 
-    var app = angular.module('app', ['ui.bootstrap', 'ui.router']);
+    var app = angular.module('app', ['ui.bootstrap', 'ui.router', 'ngSanitize']);
     app.config(function ($stateProvider, $urlRouterProvider) {
 
       $urlRouterProvider.otherwise('/');
