@@ -1,8 +1,8 @@
-define(['dataService', 'bugController', 'detailController'],
-  function (dataService, bugController, detailController) {
+define(['dataService', 'bugController', 'detailController', 'navigateController'],
+  function (dataService, bugController, detailController, navigateController) {
     'use strict';
 
-    var app = angular.module('app', ['ui.bootstrap', 'ui.router', 'ngSanitize']);
+    var app = angular.module('app', ['ui.bootstrap', 'ui.router', 'ngSanitize','ngToast']);
     app.config(function ($stateProvider, $urlRouterProvider) {
 
       $urlRouterProvider.otherwise('/');
@@ -23,6 +23,7 @@ define(['dataService', 'bugController', 'detailController'],
 
     app.factory('dataService', dataService)
       .controller('bugController', bugController)
+      .controller('navigateController', navigateController)
       .controller('detailController', detailController);
 
     return app;

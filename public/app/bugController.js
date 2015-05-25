@@ -1,7 +1,7 @@
 define(['dataService'], function (dataService) {
   'use strict';
 
-  function bugController($scope, $location, $log,  dataService) {
+  function bugController($scope, $location, $log, ngToast,  dataService) {
 
     $scope.bugs = [];
 
@@ -16,6 +16,6 @@ define(['dataService'], function (dataService) {
     });
   }
 
-  bugController.$inject = ['$scope', '$location', '$log', 'dataService'];
+  bugController.$inject = ['$scope', '$location', '$log', 'ngToast', 'dataService'];
   return bugController;
 });
