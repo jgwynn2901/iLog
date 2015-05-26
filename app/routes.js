@@ -1,3 +1,4 @@
+/*global require, module */
 var express     = require('express');
 var Bug = require('../models/bugs');
 var User = require('../models/users');
@@ -8,8 +9,10 @@ var router = express.Router();  // get an instance of the express Router
 
 // more routes for our API will happen here
 router.route('/bugs')
+
   // create a bug (accessed at POST http://localhost:8080/api/bugs)
-  .post(function(req, res) {
+  .post(function (req, res) {
+    'use strict';
     var bug = new Bug();      // create a new instance of the bug model
     bug.issue_id = req.body.issue_id;
     bug.issue_subject = req.body.issue_subject;
@@ -27,24 +30,28 @@ router.route('/bugs')
     bug.submitted_by = req.body.submitted_by;
 
     // save the bug and check for errors
-    bug.save(function(err) {
-      if (err)
-          res.send(err);
+    bug.save(function (err) {
+      if (err) {
+        res.send(err);
+      }
       res.json({ message: 'Bug created!' });
     });
   })
   // get all the bugs (accessed at GET http://localhost:3000/api/bugs)
-  .get(function(req, res) {
-    Bug.find(function(err, bugs) {
-      if (err)
-          res.send(err);
+  .get(function (req, res) {
+    'use strict';
+    Bug.find(function (err, bugs) {
+      if (err) {
+        res.send(err);
+      }
       res.json(bugs);
     });
-});
+  });
 
 router.route('/users')
   // create a bug (accessed at POST http://localhost:8080/api/bugs)
-  .post(function(req, res) {
+  .post(function (req, res) {
+    'use strict';
     var user = new User();      // create a new instance of the bug model
     user.user_id = req.body.user_id;
     user.name = req.body.name;
@@ -53,55 +60,64 @@ router.route('/users')
     user.p_name = req.body.p_name;
     user.p_group = req.body.p_group;
     // save the bug and check for errors
-    user.save(function(err) {
-      if (err)
-          res.send(err);
+    user.save(function (err) {
+      if (err) {
+        res.send(err);
+      }
       res.json({ message: 'user created!' });
     });
   })
   // get all the bugs (accessed at GET http://localhost:3000/api/bugs)
-  .get(function(req, res) {
-    User.find(function(err, users) {
-      if (err)
-          res.send(err);
+  .get(function (req, res) {
+    'use strict';
+    User.find(function (err, users) {
+      if (err) {
+        res.send(err);
+      }
       res.json(users);
     });
-});
+  });
 
 // on routes that end in /users/:user_id
 // ----------------------------------------------------
 router.route('/users/:user_id')
   // get the bug with that id (accessed at GET http://localhost:8080/api/bugs/:bug_id)
-  .get(function(req, res) {
-      User.findOne({ user_id: req.params.user_id }, function(err, user) {
-        if (err)
-          res.send(err);
-        res.json(user);
-      });
+  .get(function (req, res) {
+    'use strict';
+    User.findOne({ user_id: req.params.user_id }, function (err, user) {
+      if (err) {
+        res.send(err);
+      }
+      res.json(user);
+    });
   });
 
 // on routes that end in /bugs/:issue_id
 // ----------------------------------------------------
 router.route('/bugs/:issue_id')
   // get the bug with that id (accessed at GET http://localhost:8080/api/bugs/:bug_id)
-  .get(function(req, res) {
-      Bug.findOne({ issue_id: req.params.issue_id }, function(err, bug) {
-        if (err)
-          res.send(err);
-        res.json(bug);
-      });
+  .get(function (req, res) {
+    'use strict';
+    Bug.findOne({ issue_id: req.params.issue_id }, function (err, bug) {
+      if (err) {
+        res.send(err);
+      }
+      res.json(bug);
+    });
   });
 
 // on routes that end in /bugs/assigned_to/:name
 // ----------------------------------------------------
-router.route('/bugs/assigned_to/:name')
-  // get the bug with that id (accessed at GET http://localhost:8080/api/bugs/assigned_to/:name)
-  .get(function(req, res) {
-    Bug.find({ assigned_to: req.params.name }, function(err, bug) {
-      if (err)
+router.route('/assigned_to/:name')
+  // get the bug with that id (accessed at GET http://localhost:8080/api/assigned_to/:name)
+  .get(function (req, res) {
+    'use strict';
+    Bug.find({ assigned_to: req.params.name }, function (err, bug) {
+      if (err) {
         res.send(err);
+      }
       res.json(bug);
     });
-});
+  });
 
 module.exports = router;

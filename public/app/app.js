@@ -1,8 +1,9 @@
-define(['dataService', 'bugController', 'detailController', 'navigateController'],
-  function (dataService, bugController, detailController, navigateController) {
+/*global define, angular */
+define(['dataService', 'bugController', 'detailController', 'navigateController', 'userModalController'],
+  function (dataService, bugController, detailController, navigateController, userModalController) {
     'use strict';
 
-    var app = angular.module('app', ['ui.bootstrap', 'ui.router', 'ngSanitize','ngToast']);
+    var app = angular.module('app', ['ui.bootstrap', 'ui.router', 'ngSanitize', 'ngToast']);
     app.config(function ($stateProvider, $urlRouterProvider) {
 
       $urlRouterProvider.otherwise('/');
@@ -11,6 +12,11 @@ define(['dataService', 'bugController', 'detailController', 'navigateController'
         .state('home', {
           url: '/',
           templateUrl: 'views/list.html'
+        })
+        .state('assigned', {
+          url: '/{user_id}',
+          templateUrl: 'views/list.html',
+          controller: 'bugController'
         })
         // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
         .state('bug', {
@@ -24,6 +30,7 @@ define(['dataService', 'bugController', 'detailController', 'navigateController'
     app.factory('dataService', dataService)
       .controller('bugController', bugController)
       .controller('navigateController', navigateController)
+      .controller('userModalController', userModalController)
       .controller('detailController', detailController);
 
     return app;

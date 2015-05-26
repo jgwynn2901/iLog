@@ -69,3 +69,13 @@ body { padding-top: 70px; }
 .question :hover {
   background-color: #dfdfdf;
 }
+
+.modal-header {
+  text-align: center;
+  background-color: #f8f8f8;
+}
+
+.modal-footer {
+  background-color: #f8f8f8;
+}
+}

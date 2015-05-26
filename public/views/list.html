@@ -15,7 +15,7 @@
       <div class="question" ng-click="detail(bug.issue_id)">
         <div class="question-summary" title="{{ bug.issue_history }}">
           <div class="col-md-2">
-              <span>{{ bug.issue_id }}</span>
+              <h4>{{ bug.issue_id }}</h4>
           </div>
           <div class="col-md-10">
             <div class="row">
@@ -37,3 +37,21 @@
     </div>
   </div>
 </div>
+<script type="text/ng-template" id="userModalContent.html">
+  <div class="modal-header">
+    <h4>User Filter</h4>
+  </div>
+  <div class="modal-body">
+    <label>Select User</label>
+      <select ng-model="selectedUser"
+              ng-init="getUsers()"
+              ng-change="ok()"
+              title="Please select the user."
+              class="form-control">
+        <option ng-repeat="user in users" value="{{user.p_name}}">{{user.p_name}}</option>
+      </select>
+  </div>
+  <div class="modal-footer">
+      <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+  </div>
+</script>
