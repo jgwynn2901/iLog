@@ -8,7 +8,12 @@
       </div>
       <div class="col-md-8">
         <br/><br/>
+        <div ng-show="user_id">
+        <h3>Open Issues for {{ user_id }}</h3>
+        </div>
+        <div ng-show="!user_id">
         <h3>Open Issues</h3>
+        </div>
       </div>
     </div>
     <div class="row" ng-repeat="bug in bugs" >
@@ -24,11 +29,14 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-md-5">
+              <div class="col-md-3">
+               <span>Assigned to: {{ bug.assigned_to }}</span>
+              </div>
+              <div class="col-md-4">
                 <span>Requested by: {{ bug.submitted_by }}</span>
               </div>
-              <div class="col-md-5">
-                <span>Assigned to: {{ bug.assigned_to }}</span>
+              <div class="col-md-3">
+                <span>Opened: {{ bug.opened_dt }}</span>
               </div>
             </div>
           </div>

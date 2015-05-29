@@ -4,13 +4,13 @@ define(['dataService', 'bugController', 'detailController', 'navigateController'
     'use strict';
 
     var app = angular.module('app', ['ui.bootstrap', 'ui.router', 'ngSanitize', 'ngToast']);
-    app.config(function ($stateProvider, $urlRouterProvider) {
+    app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
       $urlRouterProvider.otherwise('/');
       $stateProvider
         // HOME STATES AND NESTED VIEWS ========================================
         .state('home', {
-          url: '/',
+          url: '/?user_id',
           templateUrl: 'views/list.html'
         })
         .state('assigned', {
@@ -25,6 +25,8 @@ define(['dataService', 'bugController', 'detailController', 'navigateController'
           templateUrl: 'views/detail.html',
           controller: 'detailController'
         });
+
+      $locationProvider.html5Mode(true);
     });
 
     app.factory('dataService', dataService)

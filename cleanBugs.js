@@ -22,17 +22,8 @@ MongoClient.connect(database.url, function (err, db) {
     // do some work here with the database.
     var collection = db.collection('bugs');
     // Get the documents collection
-    client.get("http://localhost/services/api/bugs", function (data, response) {
-      var i, result = function (err, res) {
-        if (err) {
-          console.log(err.message);
-        }
-      };
-      // parsed response body as js object
-      for (i = 0; i < data.length; i = i + 1) {
-        console.log('Inserting ' + data[0].issue_id);
-        collection.insert(data[i], result);
-      }
-    });
+    collection.remove({});
+    //Close connection
+    db.close();
   }
 });

@@ -1,3 +1,4 @@
+/*global require, module */
 //Lets load the mongoose module in our program
 var mongoose = require('mongoose');
 var Schema       = mongoose.Schema;
@@ -19,7 +20,6 @@ var BugSchema = new Schema({
     Effort: String,
     QACompleted: String,
     QAEffort: String,
-    BA_Resource: String,
     QA_Resource1: String,
     Slippage: String,
     TargetReleaseNo: String,
@@ -40,7 +40,6 @@ var BugSchema = new Schema({
     roi: String,
     send_to: String,
     CallflowType: String,
-    Dev_Resource: String,
     ITTargetDT: String,
     account: String,
     application: String,
@@ -52,6 +51,6 @@ var BugSchema = new Schema({
     priority: String,
     status: String,
     submitted_by: String
-});
+  });
 
 module.exports = mongoose.model('Bug', BugSchema);

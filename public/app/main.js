@@ -1,3 +1,4 @@
+/*global require, angular */
 require(['app'],
   function () {
     'use strict';

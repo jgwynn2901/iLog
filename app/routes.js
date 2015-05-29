@@ -40,7 +40,7 @@ router.route('/bugs')
   // get all the bugs (accessed at GET http://localhost:3000/api/bugs)
   .get(function (req, res) {
     'use strict';
-    Bug.find(function (err, bugs) {
+    Bug.find({}, null, {sort: { issue_id: 1 }}, function (err, bugs) {
       if (err) {
         res.send(err);
       }
@@ -70,7 +70,7 @@ router.route('/users')
   // get all the bugs (accessed at GET http://localhost:3000/api/bugs)
   .get(function (req, res) {
     'use strict';
-    User.find(function (err, users) {
+    User.find({}, null, {sort: { p_name: 1 }}, function (err, users) {
       if (err) {
         res.send(err);
       }
@@ -112,7 +112,7 @@ router.route('/assigned_to/:name')
   // get the bug with that id (accessed at GET http://localhost:8080/api/assigned_to/:name)
   .get(function (req, res) {
     'use strict';
-    Bug.find({ assigned_to: req.params.name }, function (err, bug) {
+    Bug.find({ assigned_to: req.params.name }, null, {sort: { issue_id: 1 }}, function (err, bug) {
       if (err) {
         res.send(err);
       }

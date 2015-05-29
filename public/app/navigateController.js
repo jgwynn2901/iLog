@@ -2,7 +2,7 @@
 define(['dataService'], function (dataService) {
   'use strict';
 
-  function navigateController($scope, $location, $modal, $log, dataService) {
+  function navigateController($scope, $state, $location, $modal, $log, dataService) {
 
     $scope.issue_id = "";
     $scope.users = [];
@@ -28,7 +28,9 @@ define(['dataService'], function (dataService) {
       modalInstance.result.then(function (selectedItem) {
         $scope.selected = selectedItem;
         $log.info('Modal seleted returned: ' + selectedItem);
-        $location.path('/?user_id=' + selectedItem);
+        $state.go('home', {
+          user_id: selectedItem
+        });
       }, function () {
         $log.info('Modal dismissed at: ' + new Date());
       });
@@ -43,6 +45,6 @@ define(['dataService'], function (dataService) {
     };
   }
 
-  navigateController.$inject = ['$scope', '$location', '$modal', '$log', 'dataService'];
+  navigateController.$inject = ['$scope', '$state', '$location', '$modal', '$log', 'dataService'];
   return navigateController;
 });

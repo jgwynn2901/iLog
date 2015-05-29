@@ -1,6 +1,5 @@
-// server.js
-'use strict';
-
+/*jslint es5: true, nomen: true */
+/*global require, define, console, process, __dirname */
 // BASE SETUP
 // =============================================================================
 
@@ -31,7 +30,8 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.set('views', './views');
 
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
+  'use strict';
   res.render('index', {
     title: 'Welcome to iLog'
   });
