@@ -1,15 +1,28 @@
 <div class="commenter-container panel-body">
   <form name="form" ng-submit="action(child)" class="form-inline" ng-hide="toggled">
-    <div class="form-group">
-      <input ng-model="child.name" class="form-control" placeholder="github username"
-             ng-keydown="selected=false" type="text" required />
-      <typeahead class="typeahead" model="items" prompt="Start typing a US state" />
+    <div class="row">
+    <div class="col-md-8">
+      <label>User Name</label>
     </div>
-    <div class="form-group">
-      <textarea ng-model="child.text" value="your comment.." class="form-control" rows="1"
-                ng-minlength="5" required></textarea>
+    <div class="col-md-8">
+      <input type="text"
+             ng-model="child.name"
+             typeahead="user.p_name for user in users | filter:$viewValue"
+             typeahead-loading="loadingusers"
+             class="form-control" autocomplete="off" required />
     </div>
-    <button ng-disabled="form.$invalid" type="submit" class="btn btn-primary">Submit</button>
+
+    <div class="col-md-8">
+      <label>Comment</label>
+    </div>
+    <div class="col-md-8">
+      <textarea ng-model="child.text" class="form-control" rows="4" cols="80" ng-minlength="5" required></textarea>
+    </div>
+     <div class="col-md-8">
+      <br/>
+      <button ng-disabled="form.$invalid" type="submit" class="btn btn-primary">Submit</button>
+    </div>
+      </div>
   </form>
   <span class="label pull-right pointer" ng-click="toggle()"
         ng-class="{'label-success': toggled, 'label-warning': !toggled}">{{ btnText }}</span>

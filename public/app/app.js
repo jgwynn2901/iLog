@@ -1,9 +1,9 @@
-/*global define, angular */
-define(['dataService', 'bugController', 'detailController', 'navigateController', 'userModalController'],
-  function (dataService, bugController, detailController, navigateController, userModalController) {
+/*global define, angular, moment */
+define(['dataService', 'bugController', 'detailController', 'navigateController', 'userModalController', 'commenter'],
+  function (dataService, bugController, detailController, navigateController, userModalController, commenter) {
     'use strict';
 
-    var app = angular.module('app', ['ui.bootstrap', 'ui.router', 'ngSanitize', 'ngToast']);
+    var app = angular.module('app', ['ui.bootstrap', 'ui.router', 'ngSanitize', 'ngAnimate', 'ngToast', 'ui.comments']);
     app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
       $urlRouterProvider.otherwise('/');
@@ -26,14 +26,32 @@ define(['dataService', 'bugController', 'detailController', 'navigateController'
           controller: 'detailController'
         });
 
-      $locationProvider.html5Mode(true);
-    });
+      //$locationProvider.html5Mode(true);
+    })
+      .config(function (commentsConfigProvider) {
+        commentsConfigProvider.set({
+          commentTemplate: 'views/comment.html',
+          commentController: 'detailController',
+          depthLimit: 10
+        });
+      });
 
     app.factory('dataService', dataService)
       .controller('bugController', bugController)
       .controller('navigateController', navigateController)
       .controller('userModalController', userModalController)
-      .controller('detailController', detailController);
+      .controller('detailController', detailController)
+      .directive('commenter', commenter)
+      .filter('timeago', function () {
+        return function (date) {
+          return moment(date).fromNow();
+        };
+      })
+      .filter('calendar', function () {
+        return function (date) {
+          return moment(date).calendar();
+        };
+      });
 
     return app;
   });

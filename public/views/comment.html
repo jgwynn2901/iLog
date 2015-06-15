@@ -1,0 +1,14 @@
+<div class="comment">
+  <div class="comment-header">
+   <a class="comment-avatar"
+      ng-href="{{comment.profileUrl}}">
+     <img ng-src="{{comment.avatarUrl}}"
+          alt="{{comment.name}}" />
+   </a>
+   <a class="comment-username"
+      ng-href="{{comment.profileUrl}}"
+      title="{{comment.username}}">{{comment.name}}</a>
+    <span class="comment-date">{{comment.date | timeAgo}}</span>
+  </div>
+  <div class="comment-body" ng-bind="comment.text"></div>
+</div>
