@@ -6,13 +6,11 @@ var Schema       = mongoose.Schema;
 /* Lets define our Model for User entity. This model represents a collection in the database.
  * We define the possible schema of User document and data types of each field.
  */
-var UserSchema = new Schema({
-    user_id: String,
-    document_type: String,
-    p_dept: String,
-    p_email: String,
-    p_group: String,
-    p_name: String
+var CommentSchema = new Schema({
+    issue_id: String,
+    user_name: String,
+    comment: String,
+    created: String
   });
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('Comment', CommentSchema);

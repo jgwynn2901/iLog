@@ -23,15 +23,16 @@ MongoClient.connect(database.url, function (err, db) {
     var collection = db.collection('bugs');
     // Get the documents collection
     client.get("http://localhost/services/api/bugs", function (data, response) {
-      var i, result = function (err, res) {
-        if (err) {
-          console.log(err.message);
-        }
-      };
-      // parsed response body as js object
-      for (i = 0; i < data.length; i = i + 1) {
-        console.log('Inserting ' + data[0].issue_id);
-        collection.insert(data[i], result);
+      if (data) {      // parsed response body as js object
+        collection.insert(data, function (err, result) {
+          if (err) {
+            console.log(err);
+          } else {
+            //Close connection
+            db.close();
+            console.log("bugs: " + data.length + " records inserted.");
+          }
+        });
       }
     });
   }

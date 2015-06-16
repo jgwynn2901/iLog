@@ -19,6 +19,9 @@ define([], function () {
       },
       findUser: function (id) {
         return $http.get("/api/users/" + id);
+      },
+      getComments: function (id) {
+        return $http.get("/api/comments/" + id);
       }
     };
   }
